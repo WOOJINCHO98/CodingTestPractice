@@ -1,0 +1,38 @@
+def solution(n, arr1, arr2):
+    answer = []
+    binary1 = []
+    binary2 = []
+    x = []
+    y = []
+    
+  
+    for i in arr1:
+        binary1.append(str(format(i,'b')))
+    for i in arr2:
+        binary2.append(str(format(i,'b')))
+    
+    for i in binary1:
+        if(len(i) != n):
+            x.append(i.zfill(n))
+        else:
+            x.append(i)
+    for i in binary2:
+        if(len(i) != n):
+            y.append(i.zfill(n))
+        else:
+            y.append(i)
+
+    for i in range(len(x)):
+        for j,k in zip(x[i],y[i]):
+            if j=='1' or k=='1':
+                answer.append("#")
+            elif j=='0' and k=='0':
+                answer.append(" ")
+            
+        answer.append("/")
+    
+    answer = "".join(answer)
+    answer = answer.split("/")
+    answer.pop()
+
+    return answer
